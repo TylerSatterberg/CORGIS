@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 2 meta tags should come first in the head; any other head content should come *after* these tags -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>{% block title %}{% endblock %} - My Webpage</title>
+     <!--nav bar-->
+    <nav class="navbar navbar-expand-sm justify-content-center navv">
+       <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link mag" href="home.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Nuclear.html">Nuclear tests</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="data.html">Nuclear data</a>
+      </li>
+	  
+      <li class="nav-item dropdown mag">
+        <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown">Rules</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="rules.html">Rules</a></li>
+          <li><a class="dropdown-item" href="DressCode.html">Dress Code</a></li>
+          <li><a class="dropdown-item" href="Tardy.html">Tardy</a></li>
+          <li><a class="dropdown-item" href="Suspension-Expulsion.html">Suspension and Expulsion</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown mag">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Programs</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="ap.html">Advanced Placement</a></li>
+          <li><a class="dropdown-item" href="sports.html ">Athletics</a></li>
+          <li><a class="dropdown-item" href="mad.html">MAD Academy</a></li>
+          <li><a class="dropdown-item" href="vada.html">VADA</a></li>
+        </ul>
+    </ul>
+  </nav>
+<!--page content-->
+{% block content %}{% endblock %}	
