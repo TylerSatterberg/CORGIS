@@ -1,0 +1,12 @@
+{% extends "Layout.html" %}
+
+{% set active_page = "home" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>About the data</h1>
+
+<p>This data from the CORGIS json data file about Nuclear explosions. This data contains information about known nuclear testing and usages from around the world from 1945 to 1998.</p>
+<p>Some statistic taken from these tests include the country that tested the nuke, the depth that the nuke was tested in kilometers. For example, if you wanted to know the how many kilotons of tnt the nuke was equivalent to, you'd be able to. If there wasn't enough data or if the data was hidden/classified, it would be recorded at 0. If we didn't know the depth the nuke was detonated it'd be recorded as 0. There are two data sets yield-lower and yield-upper because we dont know the exact amount of kilotons of tnt some nukes were, i've decided to take the average of the upper and lower to give a more accurate result.
+{% endblock %}
