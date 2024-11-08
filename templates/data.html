@@ -1,0 +1,45 @@
+
+{% extends "Layout.html" %}
+
+{% set active_page = "data" %}
+
+{% block title %}Nuclear data {% endblock %}
+
+{% block body %}
+<script>
+	window.onload = function() {
+	 
+	var chart = new CanvasJS.Chart("chartContainer", {
+		animationEnabled: true,
+		axisX: {
+			title: "Years",
+			interval: 5,
+			valueFormatString: "####",
+			minimum: "1945",
+			maximum: "2000"
+		},
+		axisY: {
+			title: "Nukes detonated",
+			includeZero: true,
+			minimum: 0
+		},
+		data: [{
+			type: "line",
+			name: "CPU Utilization",
+			connectNullData: true,
+			//nullDataLineDashType: "solid",
+			xValueFormatString: "####",
+			yValueFormatString: "#,##0.##",
+			dataPoints: {{ dataPoints }}
+		}]
+		
+	});
+	chart.render();
+	 
+	}                  
+</script>	 
+<div id="chartContainer" style="height: 500px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+{% endblock %}
+
+
