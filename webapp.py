@@ -28,7 +28,9 @@ def render_fact():
     
 @app.route("/data")
 def render_data():
-    return render_template('data.html')
+    with open('Nuclear.json') as data:
+        data = json.load(data)
+    return render_template('data.html', points=nukes(data))
 
 def get_name_options():
     with open('Nuclear.json') as nuclear_data:
@@ -72,23 +74,19 @@ def avg_yield(Country):
     else:
         return None
   
-def total_sightings(years):
-    years= {}
-    for date in years:
-        year = years["Date"]["Year"]
-        if year not in years:
-            years[year] = 1
+def nukes(data):
+    nuke = {}
+    for y in data:
+        year = y["Date"]["Year"]
+        if year in nuke:
+            nuke[year] = nuke[year] + 1
         else:
-            years[year] = years[year] + 1 
-            
-    years = dict(sorted(years.items()))
-    code = "["
-    for year, gross in years.items():
-        code = code + Markup("{ x: '" + str(year) + "', y: " + str(gross) + " },")
-    code = code[:-1]
-    code = code + "]"
-    print(code)
-    return code
+            nuke[year] = 1
+    graph_points = ""
+    for year, Nuclear in nuke.items():
+        graph_points = graph_points + Markup("{ label: '" + str(year) + "', y: " + str(Nuclear) + " }, ")
+    graph_points = graph_points[:-2]
+    return graph_points
 
 if __name__=="__main__":
     app.run(debug=True)

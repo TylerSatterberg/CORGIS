@@ -1,45 +1,39 @@
-
 {% extends "Layout.html" %}
 
 {% set active_page = "data" %}
 
-{% block title %}Nuclear data {% endblock %}
+{% block title %}Nuclear Data{% endblock %}
 
-{% block body %}
+{% block content %}
+<h1>Nuclear tests</h1>
+
 <script>
-	window.onload = function() {
-	 
-	var chart = new CanvasJS.Chart("chartContainer", {
-		animationEnabled: true,
-		axisX: {
-			title: "Years",
-			interval: 5,
-			valueFormatString: "####",
-			minimum: "1945",
-			maximum: "2000"
-		},
-		axisY: {
-			title: "Nukes detonated",
-			includeZero: true,
-			minimum: 0
-		},
-		data: [{
-			type: "line",
-			name: "CPU Utilization",
-			connectNullData: true,
-			//nullDataLineDashType: "solid",
-			xValueFormatString: "####",
-			yValueFormatString: "#,##0.##",
-			dataPoints: {{ dataPoints }}
-		}]
-		
-	});
-	chart.render();
-	 
-	}                  
-</script>	 
-<div id="chartContainer" style="height: 500px; width: 100%;"></div>
+	window.onload = function () {
+		var chart = new CanvasJS.Chart("chartContainer", {
+			animationEnabled: true,
+	    		theme: "light2", // "light1", "light2", "dark1", "dark2"
+	    		title: {
+		    		text: "test1?"
+	    		},
+	    		axisY: {
+	    			title: "Nukes",
+				includeZero: true
+	    		},
+	    		axisX: {
+	    			title: "test0",
+	    		},
+	    		data: [{
+		    		type: "column",
+		   		 dataPoints: [
+	    				{{ points }}
+		    		]	
+    	   		 }]
+   		 });
+    	chart.render();
+ 
+   	 }
+</script>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
 {% endblock %}
-
-
